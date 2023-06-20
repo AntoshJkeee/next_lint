@@ -13,7 +13,7 @@ export default function Post(props: pageProps) {
 
 	const count = useAppSelector((state) => state.counterReducer.value );
 	const dispatch = useAppDispatch();
-	const { isLoading, isFetching, data, error } = useGetUsersQuery(null);
+	const { isLoading, data } = useGetUsersQuery(null);
 
 	const onIncrement = () => {
 		dispatch(increment());
@@ -28,21 +28,29 @@ export default function Post(props: pageProps) {
 
 
 	return (
-		<div>
+		<div className='container'>
 			<h1>Post page {props.params.id}</h1>
 			<h2>Counter: { count }</h2>
-			<button onClick={onIncrement}>Увеличить счетчик </button>
-			<button onClick={onDecrement}>Уменьшить счетчик </button>
-			<button onClick={onReset}>Обнулить</button>
+			<div className='btn-container'>
+				<button onClick={onIncrement}>Увеличить счетчик </button>
+				<button onClick={onDecrement}>Уменьшить счетчик </button>
+				<button onClick={onReset}>Обнулить</button>
+			</div>
 			{
 				isLoading && <div>Loading data...</div>
 			}
 			{
-				data ? data.map((user: any) => (
-					<div key={user.id}>{user.name}</div>
-				)) : <div>Ooops. Is not data</div>
+				data ? (
+					<div className='name-list'>
+						{data.map((user: any) => (
+						<div key={user.id}>{user.name}</div>
+						))}
+					</div>
+				) :
+					<div>Ooops. Is not data</div>
 			}
 
 		</div>
 	);
 }
+
