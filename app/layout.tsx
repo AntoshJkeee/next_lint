@@ -2,6 +2,7 @@ import './globals.css';
 import { Inter } from 'next/font/google';
 import React from 'react';
 import { Header, Footer } from '../widgets';
+import { Providers } from "../redux/provider";
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -14,9 +15,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 	return (
 		<html lang='en'>
 			<body className={inter.className}>
-				<Header />
-				<main>{children}</main>
-				<Footer />
+				<Providers>
+					<Header />
+					<main>{children}</main>
+					<Footer />
+				</Providers>
 			</body>
 		</html>
 	);
