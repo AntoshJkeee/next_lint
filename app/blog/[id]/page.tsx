@@ -29,8 +29,8 @@ export default function Post(props: pageProps) {
 		<div>
 			<h1>Post page {props.params.id}</h1>
 			<h2>Counter: { count }</h2>
-			<button onClick={onIncrement}>Увеличить счетчик </button>
-			<button onClick={onDecrement}>Уменьшить счетчик </button>
+			<button onClick={onIncrement}>Увеличить счетчик</button>
+			<button onClick={onDecrement}>Уменьшить счетчик</button>
 			<button onClick={onReset}>Обнулить</button>
 		</div>
 	);
